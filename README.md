@@ -21,8 +21,11 @@ Como infraestructura necesaria para la aplicación será necesario:
 ##Herramientas
 La aplicación será desarrollada con un framework web como **Django**.
 Para ir siguiendo el desarrollo de la aplicación web y testeándola, se usará **Travis CI**, con el que se podrá, por ejemplo, probar la aplicación contra distintas configuraciones.
+
+##Comentarios
+*Según avance la asignatura, se irán refinando (añadiendo, eliminando, modificando) la funcionalidad, infraestructura y herramientas a utilizar.*
 	
 ##Inscripción en el [certamen de proyectos de la UGR](http://osl.ugr.es/bases-de-los-premios-a-proyectos-libres-de-la-ugr/)
-Proyecto inscrito al certamen
+![Inscripción al certamen de la UGR](http://i1016.photobucket.com/albums/af281/raperaco/inscripcionCertamenUGR_zps34rx09mo.png)
 
 	
