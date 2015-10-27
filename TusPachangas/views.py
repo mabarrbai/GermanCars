@@ -3,6 +3,7 @@ from django.shortcuts import render
 import random
 
 def formar_equipos(request): 
+	"""Forma aleatoriamente los equipos de una peña para el partido semanal."""
 	componentes = ['Juan','Alfonso','Carlos','Pepe','Diego','Andres','Javier','Alex','Mariano','Hugo','Iván','Jesús','Piti','Fran','Alfredo','Ángel','Raúl','Salva']
       
 	random.shuffle(componentes)	#mezcla los elementos de la lista,cambiando el orden
