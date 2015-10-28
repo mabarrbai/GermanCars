@@ -2,11 +2,8 @@
 	Fichero correspondiente a las funciones de las vistas del proyecto.
 """
 from django.shortcuts import render
-#from django.test import TestCase
 
 import random
-
-#import unittest
 
 def formar_equipos(request): 
 	"""Forma aleatoriamente los equipos de una penha para el partido semanal."""
@@ -26,13 +23,7 @@ def formar_equipos(request):
 	
 	return render(request, 'formar_equipos.html',{'equipo1':equipo1,'equipo2':equipo2})
 	
-'''
-class FormarEquiposTest(unittest.TestCase):
-	"""Clase para realizar test unitarios (unit tests)."""
-	def test_sin_componentes(self):
-		"""Test para comprobar en caso de que no haya componentes en la peña"""
-		self.assertEqual([], formar_equipos())
-'''		
+
 
 
 
