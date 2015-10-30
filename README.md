@@ -28,4 +28,15 @@ Para ir siguiendo el desarrollo de la aplicación web y testeándola, se usará 
 ##Inscripción en el [certamen de proyectos de la UGR](http://osl.ugr.es/bases-de-los-premios-a-proyectos-libres-de-la-ugr/)
 ![Inscripción al certamen de la UGR](http://i1016.photobucket.com/albums/af281/raperaco/inscripcionCertamenUGR_zps34rx09mo.png)
 
-	
+#Segundo hito del proyecto
+En este segundo hito, ya he comenzado mi proyecto de aplicación web con el framework **Django**. Ahora mismo sólo hay desarollada una vista, que mezcla los jugadores de una peña y los divide en dos equipos para disputar el partido semanal. También dispongo de una parte del modelo de la aplicación, utilizando el sistema **SQLite**.
+
+##Herramienta de construcción
+Como herramienta de construcción he usado **make** mediante un fichero Makefile. Me he decidido a usar esta porque cumple su función correctamente y es con la que más he trabajado.
+He creado una serie de objetivos en el Makefile:
+* doc (genera la documentación)
+* install (instala los paquetes requeridos para la aplicación)
+* test (testea el modelo de la aplicación (bases de datos))
+* start (arranca el servidor web de la app)
+
+##Integración continua
