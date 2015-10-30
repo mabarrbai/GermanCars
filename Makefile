@@ -1,4 +1,4 @@
-all: install start
+all: install
 
 test: install
 	echo "Testing app model..."
