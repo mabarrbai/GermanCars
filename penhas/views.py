@@ -2,6 +2,9 @@
 	Fichero correspondiente a las funciones de las vistas del proyecto.
 """
 from django.shortcuts import render
+from .models import Jugador, Penha
+from rest_framework import viewsets
+from .serializers import JugadorSerializer, PenhaSerializer
 
 import random
 
@@ -24,6 +27,18 @@ def formar_equipos(request):
 	return render(request, 'formar_equipos.html',{'equipo1':equipo1,'equipo2':equipo2})
 	
 
+class JugadorViewSet(viewsets.ModelViewSet):
+	"""
+	API que permite ver o editar jugadores.
+	"""
+	queryset = Jugador.objects.all()
+	serializer_class = JugadorSerializer
 
 
+class PenhaViewSet(viewsets.ModelViewSet):
+	"""
+	API que permite ver o editar penhas
+	"""
+	queryset = Penha.objects.all()
+	serializer_class = PenhaSerializer
 
