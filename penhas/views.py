@@ -4,7 +4,11 @@
 from django.shortcuts import render
 from .models import Jugador, Penha
 from rest_framework import viewsets
-from .serializers import JugadorSerializer, PenhaSerializer
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from .serializers import PenhaSerializer
 
 import random
 
@@ -27,18 +31,55 @@ def formar_equipos(request):
 	return render(request, 'formar_equipos.html',{'equipo1':equipo1,'equipo2':equipo2})
 	
 
-class JugadorViewSet(viewsets.ModelViewSet):
+class JSONResponse(HttpResponse):
 	"""
-	API que permite ver o editar jugadores.
+	Una respuesta HTTP que renderiza el contenido en JSON
 	"""
-	queryset = Jugador.objects.all()
-	serializer_class = JugadorSerializer
+	def __init__(self,data,**kwargs):
+		content = JSONRenderer().render(data)
+		kwargs['content_type'] = 'application/json'
+		super(JSONResponse, self).__init__(content, **kwargs)
 
+	@csrf_exempt
+	def lista_penha(request):
+	    """
+	    Lista el codigo de todas las penhas, o crea una nueva
+	    """
+	    if request.method == 'GET':
+	        penhas = Penhas.objects.all()
+	        serializer = PenhaSerializer(penhas, many=True)
+	        return JSONResponse(serializer.data)
 
-class PenhaViewSet(viewsets.ModelViewSet):
-	"""
-	API que permite ver o editar penhas
-	"""
-	queryset = Penha.objects.all()
-	serializer_class = PenhaSerializer
+	    elif request.method == 'POST':
+	        data = JSONParser().parse(request)
+	        serializer = PenhaSerializer(data=data)
+	        if serializer.is_valid():
+	            serializer.save()
+	            return JSONResponse(serializer.data, status=201)
+	        return JSONResponse(serializer.errors, status=400)
 
+	@csrf_exempt
+	def penha_detail(request, pk):
+	    """
+	    Recupera,actualiza o borra el codigo de una penha
+	    """
+	    try:
+	        penha = Penha.objects.get(pk=pk)
+	    except Penha.DoesNotExist:
+	        return HttpResponse(status=404)
+
+	    if request.method == 'GET':
+	        serializer = PenhaSerializer(penha)
+	        return JSONResponse(serializer.data)
+
+	    elif request.method == 'PUT':
+	        data = JSONParser().parse(request)
+	        serializer = PenhaSerializer(penha, data=data)
+	        if serializer.is_valid():
+	            serializer.save()
+	            return JSONResponse(serializer.data)
+	        return JSONResponse(serializer.errors, status=400)
+
+	    elif request.method == 'DELETE':
+	        penha.delete()
+	        return HttpResponse(status=204)
