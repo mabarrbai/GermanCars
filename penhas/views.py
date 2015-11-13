@@ -40,46 +40,46 @@ class JSONResponse(HttpResponse):
 		kwargs['content_type'] = 'application/json'
 		super(JSONResponse, self).__init__(content, **kwargs)
 
-	@csrf_exempt
-	def lista_penha(request):
-	    """
-	    Lista el codigo de todas las penhas, o crea una nueva
-	    """
-	    if request.method == 'GET':
-	        penhas = Penhas.objects.all()
-	        serializer = PenhaSerializer(penhas, many=True)
-	        return JSONResponse(serializer.data)
+@csrf_exempt
+def lista_penha(request):
+    """
+    Lista el codigo de todas las penhas, o crea una nueva
+    """
+    if request.method == 'GET':
+        penhas = Penha.objects.all()
+        serializer = PenhaSerializer(penhas, many=True)
+        return JSONResponse(serializer.data)
 
-	    elif request.method == 'POST':
-	        data = JSONParser().parse(request)
-	        serializer = PenhaSerializer(data=data)
-	        if serializer.is_valid():
-	            serializer.save()
-	            return JSONResponse(serializer.data, status=201)
-	        return JSONResponse(serializer.errors, status=400)
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = PenhaSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JSONResponse(serializer.data, status=201)
+        return JSONResponse(serializer.errors, status=400)
 
-	@csrf_exempt
-	def penha_detail(request, pk):
-	    """
-	    Recupera,actualiza o borra el codigo de una penha
-	    """
-	    try:
-	        penha = Penha.objects.get(pk=pk)
-	    except Penha.DoesNotExist:
-	        return HttpResponse(status=404)
+@csrf_exempt
+def penha_detail(request, pk):
+    """
+    Recupera,actualiza o borra el codigo de una penha
+    """
+    try:
+        penha = Penha.objects.get(pk=pk)
+    except Penha.DoesNotExist:
+        return HttpResponse(status=404)
 
-	    if request.method == 'GET':
-	        serializer = PenhaSerializer(penha)
-	        return JSONResponse(serializer.data)
+    if request.method == 'GET':
+        serializer = PenhaSerializer(penha)
+        return JSONResponse(serializer.data)
 
-	    elif request.method == 'PUT':
-	        data = JSONParser().parse(request)
-	        serializer = PenhaSerializer(penha, data=data)
-	        if serializer.is_valid():
-	            serializer.save()
-	            return JSONResponse(serializer.data)
-	        return JSONResponse(serializer.errors, status=400)
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = PenhaSerializer(penha, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JSONResponse(serializer.data)
+        return JSONResponse(serializer.errors, status=400)
 
-	    elif request.method == 'DELETE':
-	        penha.delete()
-	        return HttpResponse(status=204)
+    elif request.method == 'DELETE':
+        penha.delete()
+        return HttpResponse(status=204)
