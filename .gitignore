@@ -9,3 +9,6 @@
 *.[oa]
 *~
 *.#
+*.pyc
+staticfiles
+__pycache__
