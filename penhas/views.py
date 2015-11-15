@@ -13,10 +13,12 @@ from .serializers import PenhaSerializer
 
 import random
 
+import datetime
+
 def fecha_actual(request):
     ahora = datetime.datetime.now()
     return render(request, 'fecha_actual.html',{'fecha_actual':ahora})
-    
+
 def formar_equipos(request): 
 	"""Forma aleatoriamente los equipos de una penha para el partido semanal."""
 	#componentes = []
