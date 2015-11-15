@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 """
 Django settings for TusPachangas project.
 
@@ -67,9 +68,7 @@ ROOT_URLCONF = 'TusPachangas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-        	'/home/alex/Escritorio/Grado Informática/4º Informática/1º cuatrimestre/Infraestructura Virtual/Repositorio de GitHub de la asignatura/TusPachangas/TusPachangas/templates',
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
