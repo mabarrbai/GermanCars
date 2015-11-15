@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 """
 	Fichero correspondiente a las funciones de las vistas del proyecto.
 """
