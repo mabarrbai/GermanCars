@@ -32,7 +32,7 @@ En mi caso, me he decidido por Heroku, ya que durante su utilización en los eje
 
 
 ##Entorno de pruebas
-Para el entorno de pruebas se ha utilizado Docker el cual está basado en un sistema de contenedores. Concretamente, he creado una imagen basada en Ubuntu la cual tiene la aplicación TusPachangas descargada y preparada para su ejecución y la cual puede ser obtenida con una sola orden desde DockerHub.
+Para el entorno de pruebas se ha utilizado Docker el cual está basado en un sistema de contenedores. Concretamente, he creado una imagen basada en Ubuntu la cual tiene la aplicación TusPachangas descargada y preparada para su ejecución y la cual puede ser obtenida con una sola orden desde DockerHub. [Imagen en DockerHub](https://hub.docker.com/r/mabarrbai/tuspachangas/)
 
 [**Más información**](https://github.com/mabarrbai/TusPachangas/blob/master/doc/docker.md)
 
