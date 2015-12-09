@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Descarga docker
-sudo apt-get install -y docker.io
+sudo wget -qO- https://get.docker.com/ | sh
 # Inicia el servicio docker
 sudo service docker start
 #Descarga la imagen

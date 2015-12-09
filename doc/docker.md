@@ -12,6 +12,7 @@ Tras pulsar en Create, falta indicarle que se automatizará la construcción a p
 
 Mencionar que tras cada cambio que se realice en el repositorio es integrado en la imagen de DockerHub.
 
+La página en DockerHub referente a mi imagen se puede encontrar [aquí](https://hub.docker.com/r/mabarrbai/tuspachangas/)
 Para **descargar** la imagen:
 ~~~
 sudo docker pull mabarrbai/tuspachangas
@@ -26,7 +27,7 @@ python manage.py runserver 0.0.0.0:5500 &
 
 Ya sólo falta saber la IP de dicho contenedor con el comando **ifconfig**.
 
-Para automatizar todo este proceso, he creado un script **docker.sh** el cual se puede encontrar en la carpeta /script del repositorio TusPachangas.
+Para automatizar todo este proceso, he creado un script **docker.sh** el cual se puede encontrar en la carpeta /scripts del repositorio TusPachangas.
 ~~~
 #!/bin/bash
 
@@ -40,7 +41,7 @@ sudo docker pull mabarrbai/tuspachangas
 sudo docker run -i -t mabarrbai/tuspachangas /bin/bash 
 ~~~
 
-Este script inicia el contenedor y nos mete en un terminal de dicho contenedor. Ahora sólo faltaría ejecutar la aplicación TusPachangas:
+Tras ejecutarlo con **./docker.sh**, este script inicia el contenedor y nos mete en un terminal de dicho contenedor. Ahora sólo faltaría ejecutar la aplicación TusPachangas:
 ~~~
 cd TusPachangas/
 python manage.py runserver 0.0.0.0:5500 &
