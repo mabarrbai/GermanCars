@@ -37,19 +37,19 @@ Para el sistema de test, he usado un sistema de testeos unitarios específicos d
 He usado este sistema de testeo ya que está enfocado directamente a proyectos con Django y a sus funcionalidades como vistas,modelos,etc.
 
 Para la integración continua, he usado el sistema de **Travis CI** ya que lo indiqué en la planificación inicial y además he comprobado su facilidad de uso y su gran utilidad. Ante cualquier *push* al repositorio de mi proyecto (el cual está sincronizado con Travis), Travis se encarga de llevar a cabo las pruebas de integración continua indicadas en el fichero *.travis.yml*.
-[Más información](https://github.com/mabarrbai/TusPachangas/blob/master/doc/CI.md)
+[**Más información**](https://github.com/mabarrbai/TusPachangas/blob/master/doc/CI.md)
 
 #Despliegue de la aplicación en un PaaS
 En esta parte, el objetivo principal ha sido desplegar nuestra aplicación sobre un PaaS. 
 En mi caso, me he decidido por Heroku, ya que durante su utilización en los ejercicios me ha parecido simple de comprender y usar porque funciona con una simple configuración, además de ser gratuito por lo que cubre todos mis objetivos. Tambien admite múltiples lenguajes de programación, entre ellos Python con el framework Django sobre el cual está construida mi aplicación web.
 
-[Más información](https://github.com/mabarrbai/TusPachangas/blob/master/doc/PAAS.md)
+[**Más información**](https://github.com/mabarrbai/TusPachangas/blob/master/doc/PAAS.md)
 
 
 #Entorno de pruebas
 Para el entorno de pruebas se ha utilizado Docker el cual está basado en un sistema de contenedores. Concretamente, he creado una imagen basada en Ubuntu la cual tiene la aplicación TusPachangas descargada y preparada para su ejecución y la cual puede ser obtenida con una sola orden desde DockerHub.
 
-[Más información](https://github.com/mabarrbai/TusPachangas/blob/master/doc/docker.md)
+[**Más información**](https://github.com/mabarrbai/TusPachangas/blob/master/doc/docker.md)
 
 
 
