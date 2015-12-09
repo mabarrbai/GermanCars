@@ -19,6 +19,5 @@ RUN sudo apt-get -y install git
 RUN sudo git clone https://github.com/mabarrbai/TusPachangas.git
 
 #Instalar aplicacion
-RUN cd TusPachangas/
-RUN pip install -r requirements.txt
-RUN python manage.py syncdb --noinput
+RUN cd TusPachangas/ && pip install -r requirements.txt
+RUN cd TusPachangas/ && python manage.py syncdb --noinput
