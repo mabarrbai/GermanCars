@@ -1,7 +1,7 @@
 from django.test import TestCase
 #from rest_framework import status
 #from rest_framework.test import APITestCase
-from penhas.models import Penha,Jugador
+from partidos_penha.models import Penha,Jugador
 
 class PenhaTestCase(TestCase):
 	def setUp(self):
