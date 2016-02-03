@@ -1,6 +1,5 @@
 Django==1.7
 MarkupSafe==0.23
-apt-xapian-index==0.45
 argparse==1.2.1
 chardet==2.0.1
 colorama==0.2.5
