@@ -1,0 +1,18 @@
+{% extends 'partidos_penha/base.html' %}
+
+{% load staticfiles %}
+
+	{% block title %}About{% endblock %}
+    
+
+    {% block body_block %}
+    	<div class="page-header">
+	        <h1>TusPachangas</h1>
+	        <h2>About TusPachangas</h2>
+	    </div>
+	        <strong>{{ boldmessage }}</strong><br />
+	        <a href="/partidos/penha">Inicio</a><br />
+	        <img src="{% static "images/coca-cola-futbol01.jpg" %}" alt="Leyes del fútbol callejero de niños" />
+	    {% endblock %}
+
+</html>

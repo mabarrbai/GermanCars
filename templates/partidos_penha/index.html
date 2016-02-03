@@ -1,0 +1,99 @@
+{% extends 'partidos_penha/base.html' %}
+
+{% load staticfiles %}    
+
+    {% block head_block %}
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+
+        <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: "{% url 'reclama_datos' %}",
+                type: 'get',                        
+                success: function(datos) {
+                    Visualiza_datos (datos);  
+                },
+                failure: function(datos) { 
+                    alert('Ha ocurrido un problema en la visualización de visitas');
+                }
+            });
+        
+
+            function Visualiza_datos (datos) {
+                var penha = [];
+                var visita = [];
+
+                penha = datos['penhas'];
+                visita = datos['visitas'];
+                
+                $('#container').highcharts({
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'Top 5 penhas'
+                    },
+                    xAxis: {
+                        categories: penha
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Visitas a cada penha'
+                        }
+                    },
+                    series: [{
+                        name: 'Visitas',
+                        data: visita
+                    }],
+                });
+            };
+        });
+        </script>
+    {% endblock %}
+    
+    {% block body_block %}
+        <div class="page-header">
+            <h1>TusPachangas</h1>
+            <h2>Inicio</h2>
+        </div>
+            <div class="row placeholders">
+                <div class="col-xs-12 col-sm-6 placeholder">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Penhas</h4>
+                        </div>
+                    </div>
+                        {% if penhas %}
+                        	<ul class="list-group">
+                        		{% for penha in penhas %}
+                        		<li class="list-group-item"><a href="/partidos/penha/{{ penha.slug }}">{{ penha }}</a></li>
+                        		{% endfor %}
+                        	</ul>
+                    	{% else %}
+                    		<strong>No hay penhas registradas</strong>
+                		{% endif %}
+                </div>
+                <div class="col-xs-12 col-sm-6 placeholder">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Top 10 Jugadores</h4>
+                        </div>
+                    </div>
+
+                    {% if jugadores %}
+                        <ul class="list-group">
+                            {% for jugador in jugadores %}
+                             <li class="list-group-item"><a href="/partidos/penha/{{ jugador.penha.slug }}">{{ jugador }} ({{ jugador.penha }})-> {{ jugador.megusta }} votos</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <strong>No hay jugadores</strong>
+                    {% endif %}
+                </div>
+            <a href="/partidos/penha/about/">About</a><br />
+            <img src="{% static "images/leyes_futbol_calle.jpg" %}" alt="Imagen de fútbol en la calle" />
+
+            <div id="container" style="height: 300px"></div> 
+    {% endblock %}
+
+</html>

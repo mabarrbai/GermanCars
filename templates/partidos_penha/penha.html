@@ -1,0 +1,58 @@
+{% extends 'partidos_penha/base.html' %}
+
+
+    {% block title %}{{ penha_name }}{% endblock %}
+    
+    {% block head_block %}
+    	<script>
+        $(document).ready(function(){
+        	$('.megusta').click(function(){
+    			var jugid;
+    			jugid =  $(this).attr("data-jugid");
+    			$.get("{% url 'megusta_jugador' %}", {jugador_id: jugid}, function(data){
+	    				$('#contador_megusta'+jugid).html(data);
+	    				//alert('#contador_megusta'+jugid);
+	    				$('button[data-jugid='+jugid+']').hide();
+        			});
+			});
+		});
+    	</script>    	
+    {% endblock %}
+
+    {% block body_block %}
+        <div class="page-header">
+            <h1>TusPachangas</h1>
+            <h2>{{ penha }}</h2>
+        </div>  
+            {% if penha %}
+                
+                {% if jugadores %}
+	                <ul>
+	                    {% for jugador in jugadores %}
+	                    	<li>{{ jugador }} {% if user.is_authenticated %}<button class="btn btn-default btn-xs megusta" data-jugid="{{ jugador.id }}">Me gusta</button>{% endif %} A <strong id="contador_megusta{{ jugador.id }}"><font color="blue">{{jugador.megusta}}</font></strong> usuarios le gusta este jugador</li>
+	                    {% endfor %}                    
+	                </ul>
+
+                {% else %}
+                    <strong>No hay jugadores registrados en esta penha.</strong>
+                {% endif %}
+				
+				{% if user.is_authenticated %}
+                    <a href="/partidos/penha/{{ penha.slug }}/add_jugador/">Insertar nuevo Jugador</a><br />
+                {% else %}
+                	<i>Es necesario estar identificado como usuario para votar y añadir jugadores</i><br />
+                {% endif %}
+                
+                <p>Dirección: {{ penha.direccion }} </p>
+
+                <p>Visitas: {{ penha.visitas }}</p>
+
+                {% load easy_maps_tags %}
+
+                {% easy_map penha.direccion 400 400 %}                
+            {% else %}
+               La penha {{ penha_name }} no existe
+            {% endif %}
+            <a href="/partidos/penha"><b>Volver a la portada</b></a><br />
+    {% endblock %}
+</html>
