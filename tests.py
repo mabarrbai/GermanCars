@@ -17,7 +17,7 @@ class PenhaTestCase(TestCase):
 		self.assertEqual(pMaceta.direccion, 'Av. Pechuelos 1, Peligros, Granada, Spain')
 		self.assertEqual(pTercerTiempo.ciudad, 'Granada')
 		self.assertEqual(pTercerTiempo.direccion, 'Recogidas 1, Granada, Spain')
-		print("Test de creación de peña correcto y superado.")
+		print("Test de creacion de penha correcto y superado.")
 
 class JugadorTestCase(TestCase):
 	def setUp(self):
@@ -29,7 +29,7 @@ class JugadorTestCase(TestCase):
 		Jugador.objects.create(nombre="Cristiano", apellidos="Biraghi", penha=pTercerTiempo)
 
 	def test_jugador_pertenece_penha(self):
-		"""Un jugador pertenece a una peña"""
+		"""Un jugador pertenece a una penha"""
 		Iniesta = Jugador.objects.get(nombre="Andres", apellidos="Iniesta")
 		Biraghi = Jugador.objects.get(nombre="Cristiano", apellidos="Biraghi")
 		
@@ -38,4 +38,4 @@ class JugadorTestCase(TestCase):
 
 		self.assertEqual(Iniesta.penha, pMaceta)
 		self.assertEqual(Biraghi.penha, pTercerTiempo)
-		print("Test de creación de jugador y pertenencia a peña correcto y superado.")
+		print("Test de creacion de jugador y pertenencia a penha correcto y superado.")
