@@ -1,6 +1,4 @@
 Django==1.7
-MarkupSafe==0.23
-argparse==1.2.1
 django-appconf==1.0.1
 django-classy-tags==0.6.2
 django-easy-maps==0.9.2
@@ -11,15 +9,7 @@ django-toolbelt==0.0.1
 djangorestframework==3.3.1
 geopy==1.11.0
 gunicorn==19.3.0
-html5lib==0.999
 itsdangerous==0.24
 pyOpenSSL==0.13
-pymongo==3.1.1
-pyserial==2.6
 requests==2.2.1
-six==1.5.2
-ssh-import-id==3.21
-urllib3==1.7.1
-virtualenv==1.11.4
 wheel==0.24.0
-zope.interface==4.0.5
