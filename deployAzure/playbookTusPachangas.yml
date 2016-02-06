@@ -1,5 +1,5 @@
-- hosts: azure
-  remote_user: alex
+- hosts: localhost
+  remote_user: vagrant
   become: yes
   become_method: sudo
   tasks:
