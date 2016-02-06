@@ -1,5 +1,6 @@
 #!/bin/bash
-#Herramientas
+#Herramientas necesarias
+sudo apt-get update
 sudo apt-get install nodejs-legacy
 sudo apt-get install npm
 sudo npm install -g azure-cli
@@ -8,7 +9,7 @@ sudo wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
 sudo dpkg -i vagrant_1.8.1_x86_64.deb
 vagrant plugin install vagrant-azure
 
-#Despliegue
+#Despliegue en Azure
 cd ../deployAzure/
 export ANSIBLE_HOSTS=~/ansible_hosts
 vagrant up --provider=azure
