@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'partidos_penha',
     'registration',	#add in the registration package
     'easy_maps',
+    'rest_framework',
 )
 
 if django.VERSION < (1, 7):

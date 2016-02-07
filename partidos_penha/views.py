@@ -6,6 +6,12 @@ from partidos_penha.forms import JugadorForm
 
 from django.http import JsonResponse
 
+from rest_framework import viewsets
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from .serializers import PenhaSerializer
+
 def index(request):
 	penha_list = Penha.objects.order_by('nombre')[:10]
 	jugador_list = Jugador.objects.order_by('-megusta')[:10]
@@ -97,3 +103,55 @@ def megusta_jugador(request):
 	
 	return HttpResponse(megusta)
 	
+class JSONResponse(HttpResponse):
+    """
+    Una respuesta HTTP que renderiza el contenido en JSON
+    """
+    def __init__(self,data,**kwargs):
+        content = JSONRenderer().render(data)
+        kwargs['content_type'] = 'application/json'
+        super(JSONResponse, self).__init__(content, **kwargs)
+
+@csrf_exempt
+def lista_penha(request):
+    """
+    Lista el codigo de todas las penhas, o crea una nueva
+    """
+    if request.method == 'GET':
+        penhas = Penha.objects.all()
+        serializer = PenhaSerializer(penhas, many=True)
+        return JSONResponse(serializer.data)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = PenhaSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JSONResponse(serializer.data, status=201)
+        return JSONResponse(serializer.errors, status=400)
+
+@csrf_exempt
+def penha_detail(request, pk):
+    """
+    Recupera,actualiza o borra el codigo de una penha
+    """
+    try:
+        penha = Penha.objects.get(pk=pk)
+    except Penha.DoesNotExist:
+        return HttpResponse(status=404)
+
+    if request.method == 'GET':
+        serializer = PenhaSerializer(penha)
+        return JSONResponse(serializer.data)
+
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = PenhaSerializer(penha, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JSONResponse(serializer.data)
+        return JSONResponse(serializer.errors, status=400)
+
+    elif request.method == 'DELETE':
+        penha.delete()
+        return HttpResponse(status=204)
