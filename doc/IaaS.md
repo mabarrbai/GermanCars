@@ -2,7 +2,7 @@
 ##Microsoft Azure
 El presente documento está dividido en dos partes: una primera que contendrá las instrucciones **necesarias** para **configurar la cuenta de Azure** y una segunda parte en la que se detalla el resto de pasos (lo que realiza el script) a título informativo.
 
-###Configuración de la cuenta de Azure. Pasos previos a la ejecución del script
+###Configuración de la cuenta de Azure. Pasos previos a la ejecución del script. (Hacer por el usuario manualmente)
 * Instalar el cliente de línea de órdenes (CLI) de Azure:
 ~~~
 sudo apt-get install npm
@@ -90,7 +90,6 @@ export ANSIBLE_HOSTS=~/ansible_hosts
 
 * Crear el playbook a usar de Ansible(playbookTusPachangas.yml):
 ~~~
----
 - hosts: localhost
   remote_user: vagrant
   become: yes
@@ -131,7 +130,6 @@ export ANSIBLE_HOSTS=~/ansible_hosts
     command: nohup python ~/appDAI/manage.py runserver 0.0.0.0:80
     tags:
     - app
-    
 ~~~
 
 * Crear el Vagrantfile:
@@ -155,8 +153,8 @@ Vagrant.configure(2) do |config|
   	azure.cloud_service_name = 'tuspachangas'
   	azure.vm_password = 'Alex2016!'
   	azure.vm_location = 'Central US' 
-        azure.ssh_port = '22'
-        azure.tcp_endpoints = '80:80'
+    azure.ssh_port = '22'
+    azure.tcp_endpoints = '80:80'
   end
   
   config.vm.provision "ansible" do |ansible|
@@ -166,3 +164,10 @@ Vagrant.configure(2) do |config|
   end
 end
 ~~~
+
+Este fichero Vagrantfile se divide en tres partes.
+La primera indica aspectos del box de Vagrant y generales de la máquina virtual que se creará como por ejemplo aspectos de red, y la asignación del nombre localhost.
+
+Una segunda parte en la que se indican características referentes al 'provider' Azure. Las opciones aquí establecidas son algunas de las que pone a disposición el plugin de Azure para Vagrant, todo referente a aspectos de gestión de la máquina virtual como nombre de la máquina, certificados, nombre del servicio en la nube el cual podríamos decir que es equivalente al nombre del dominio (en mi caso será  tuspachangas.cloudapp.net), el usuario administrador de la máquina que si no se indica, por defecto es vagrant, la password de dicho administrador, etc.
+
+Y la tercera parte que se corresponde con la provisión, es decir al uso de ansible por medio del playbook que se le indique.
