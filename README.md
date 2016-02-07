@@ -41,7 +41,7 @@ Para el entorno de pruebas se ha utilizado Docker el cual está basado en un sis
 ##Despliegue de la aplicación en un IaaS
 También está disponible la posibilidad de desplegar la aplicación en un IaaS.
 Esto se puede llevar a cabo con el script que se aporta en la carpeta **scripts** de nombre **deployAzure.sh**. Este script se encarga de instalar todas las herramientas necesarias para el despliegue y de lanzar Vagrant configurado para crear y configurar una máquina virtual en Microsoft Azure y para utilizar Ansible como provisionador.
-Para que la ejecución del script se haga de forma correcta, es necesario tener previamente una cuenta en Azure además de configurada correctamente. Los detalles de dicha configuración se pueden leer en el siguiente enlace.
+Para que la ejecución del script se haga de forma correcta, es **necesario tener previamente una cuenta en Azure además de configurada correctamente. Los detalles de dicha configuración se pueden leer en el siguiente enlace.**
 [**Más información**](https://github.com/mabarrbai/TusPachangas/blob/master/doc/IaaS.md)
 
 

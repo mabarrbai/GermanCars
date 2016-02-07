@@ -50,6 +50,12 @@ cat azurevagrant.key > azurevagrant.pem
 
 Con estos pasos realizados correctamente, ya tendremos la cuenta Azure correctamente configurada para aceptar el despliegue realizado desde el script mediante el Vagrantfile y el playbook de Ansible.
 
+* Clonar el repositorio y lanzar el script con:
+~~~
+git clone git@github.com:mabarrbai/TusPachangas.git
+cd TusPachangas/scripts
+./deployAzure.sh
+~~~
 
 ###Resto del proceso de despliegue (lo realiza el script)
 * Instalar herramientas generales necesarias
