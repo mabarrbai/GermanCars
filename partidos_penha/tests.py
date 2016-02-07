@@ -64,4 +64,4 @@ class RutasPenhasJSON(APITestCase):
 			self.assertEqual(response['Content-Type'], 'application/json')
 			print("Ruta /penhas/" + str(i) + "/ consultada correctamente")
 		
-		print("JSON: Rutas de cada penha consultada correctamente")
+		print("JSON: Rutas de cada penha consultada correctamente.")
