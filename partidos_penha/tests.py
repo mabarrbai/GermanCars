@@ -46,7 +46,7 @@ class RutasPenhasJSON(APITestCase):
 		Penha.objects.create(nombre="El Tercer Tiempo", ciudad="Granada")
 		Penha.objects.create(nombre="La Maceta", ciudad="Peligros")
 
-		response = self.client.get('/json/penhas/')
+		response = self.client.get('json/penhas/')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 		self.assertEqual(response['Content-Type'], 'application/json')
 
@@ -59,7 +59,7 @@ class RutasPenhasJSON(APITestCase):
 		
 		penhas = Penha.objects.values_list('id',flat=True)
 		for i in penhas:
-			response = self.client.get('/json/penhas/'+str(i)+'/')
+			response = self.client.get('json/penhas/'+str(i)+'/')
 			self.assertEqual(response.status_code, status.HTTP_200_OK)
 			self.assertEqual(response['Content-Type'], 'application/json')
 			print("Ruta /penhas/" + str(i) + "/ consultada correctamente")
