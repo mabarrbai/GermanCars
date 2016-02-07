@@ -50,7 +50,7 @@ class RutasPenhasJSON(APITestCase):
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 		self.assertEqual(response['Content-Type'], 'application/json')
 
-		print("Ruta '/penhas/' consultada correctamente")
+		print("JSON: Ruta '/json/penhas/' consultada correctamente")
 
 	def test_detalle_penha(self):
 		"""Testea el listado de cada penha individualmente en JSON"""
@@ -64,4 +64,4 @@ class RutasPenhasJSON(APITestCase):
 			self.assertEqual(response['Content-Type'], 'application/json')
 			print("Ruta /penhas/" + str(i) + "/ consultada correctamente")
 		
-		print("Rutas de cada penha consultada correctamente")
+		print("JSON: Rutas de cada penha consultada correctamente")
