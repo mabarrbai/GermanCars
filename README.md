@@ -1,6 +1,6 @@
 # TusPachangas
 [![Build Status](https://travis-ci.org/mabarrbai/TusPachangas.svg?branch=master)](https://travis-ci.org/mabarrbai/TusPachangas)
-[![Build Status](https://snap-ci.com/mabarrbai/TusPachangas/branch/master/build_image)](https://snap-ci.com/mabarrbai/TusPachangas/branch/master)
+
 [![Deploy to Heroku TusPachangas](http://blog.openplans.org/wp-content/uploads/2014/12/Screen-Shot-2014-12-03-at-10.47.32-PM.png)](https://tuspachangas.herokuapp.com/partidos/penha)
 [![Deploy Azure](http://www.file-extensions.org/imgs/app-icon/128/10485/microsoft-windows-azure-icon.png)](http://tuspachangas.cloudapp.net/partidos/penha/)
 
