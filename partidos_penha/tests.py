@@ -1,6 +1,6 @@
 from django.test import TestCase
-#from rest_framework import status
-#from rest_framework.test import APITestCase
+from rest_framework import status
+from rest_framework.test import APITestCase
 from partidos_penha.models import Penha,Jugador
 
 class PenhaTestCase(TestCase):
@@ -39,3 +39,29 @@ class JugadorTestCase(TestCase):
 		self.assertEqual(Iniesta.penha, pMaceta)
 		self.assertEqual(Biraghi.penha, pTercerTiempo)
 		print("Test de creacion de jugador y pertenencia a penha correcto y superado.")
+
+class RutasPenhasJSON(APITestCase):
+	def test_listar_penhas(self):
+		"""Listar todas las penhas en JSON"""
+		Penha.objects.create(nombre="El Tercer Tiempo", ciudad="Granada")
+		Penha.objects.create(nombre="La Maceta", ciudad="Peligros")
+
+		response = self.client.get('/penhas/')
+		self.assertEqual(response.status_code, status.HTTP_200_OK)
+		self.assertEqual(response['Content-Type'], 'application/json')
+
+		print("Ruta '/penhas/' consultada correctamente")
+
+	def test_detalle_penha(self):
+		"""Testea el listado de cada penha individualmente en JSON"""
+		Penha.objects.create(nombre="El Tercer Tiempo", ciudad="Granada")
+		Penha.objects.create(nombre="La Maceta", ciudad="Peligros")
+		
+		penhas = Penha.objects.values_list('id',flat=True)
+		for i in penhas:
+			response = self.client.get('/penhas/'+str(i)+'/')
+			self.assertEqual(response.status_code, status.HTTP_200_OK)
+			self.assertEqual(response['Content-Type'], 'application/json')
+			print("Ruta /penhas/" + str(i) + "/ consultada correctamente")
+		
+		print("Rutas de cada penha consultada correctamente")
