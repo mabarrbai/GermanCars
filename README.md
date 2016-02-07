@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/mabarrbai/TusPachangas.svg?branch=master)](https://travis-ci.org/mabarrbai/TusPachangas)
 [![Build Status](https://snap-ci.com/mabarrbai/TusPachangas/branch/master/build_image)](https://snap-ci.com/mabarrbai/TusPachangas/branch/master)
 [![Deploy to Heroku TusPachangas](http://blog.openplans.org/wp-content/uploads/2014/12/Screen-Shot-2014-12-03-at-10.47.32-PM.png)](https://tuspachangas.herokuapp.com/partidos/penha)
+[![Deploy Azure](http://www.file-extensions.org/imgs/app-icon/128/10485/microsoft-windows-azure-icon.png)](http://tuspachangas.cloudapp.net/partidos/penha/)
 
 Proyecto de la asignatura Infraestructura Virtual en conjunto con la de Desarrollo de Aplicaciones para Internet
 
@@ -35,6 +36,13 @@ En mi caso, me he decidido por Heroku, ya que durante su utilización en los eje
 Para el entorno de pruebas se ha utilizado Docker el cual está basado en un sistema de contenedores. Concretamente, he creado una imagen basada en Ubuntu la cual tiene la aplicación TusPachangas descargada y preparada para su ejecución y la cual puede ser obtenida con una sola orden desde DockerHub. [Imagen en DockerHub](https://hub.docker.com/r/mabarrbai/tuspachangas/)
 
 [**Más información**](https://github.com/mabarrbai/TusPachangas/blob/master/doc/docker.md)
+
+
+##Despliegue de la aplicación en un IaaS
+También está disponible la posibilidad de desplegar la aplicación en un IaaS.
+Esto se puede llevar a cabo con el script que se aporta en la carpeta **scripts** de nombre **deployAzure.sh**. Este script se encarga de instalar todas las herramientas necesarias para el despliegue y de lanzar Vagrant configurado para crear y configurar una máquina virtual en Microsoft Azure y para utilizar Ansible como provisionador.
+Para que la ejecución del script se haga de forma correcta, es necesario tener previamente una cuenta en Azure además de configurada correctamente. Los detalles de dicha configuración se pueden leer en el siguiente enlace.
+[**Más información**](https://github.com/mabarrbai/TusPachangas/blob/master/doc/IaaS.md)
 
 
 
