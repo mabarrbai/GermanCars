@@ -47,6 +47,11 @@ openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out azur
 cat azurevagrant.key > azurevagrant.pem
 ~~~
 
+* En el fichero Vagrantfile de la carpeta deployAzure, modificar los siguientes campos por los propios del usuario:
+	* **azure.mgmt_certificate**: (Línea 64) cambiar por la ruta dónde se encuentre el certificado .pem
+	* **azure.subscription_id**: (Línea 66) cambiar por el ID de suscripción de la cuenta de Azure del usuario
+	* **azure.vm_password**: (Línea 70) cambiar por el password deseado del administrador de la máquina virtual a crear
+
 
 Con estos pasos realizados correctamente, ya tendremos la cuenta Azure correctamente configurada para aceptar el despliegue realizado desde el script mediante el Vagrantfile y el playbook de Ansible.
 
