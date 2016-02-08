@@ -52,6 +52,7 @@ cat azurevagrant.key > azurevagrant.pem
 	* **azure.subscription_id**: (Línea 66) cambiar por el ID de suscripción de la cuenta de Azure del usuario
 	* **azure.vm_password**: (Línea 70) cambiar por el password deseado del administrador de la máquina virtual a crear
 
+* En el script deployAzure.sh de la carpeta scripts, cambiar en la última línea la password (Alex2016! en el script de ejemplo) de la máquina virtual por la misma que *azure.vm_password* del apartado anterior .
 
 Con estos pasos realizados correctamente, ya tendremos la cuenta Azure correctamente configurada para aceptar el despliegue realizado desde el script mediante el Vagrantfile y el playbook de Ansible.
 
@@ -136,12 +137,21 @@ export ANSIBLE_HOSTS=~/ansible_hosts
     pip: requirements=~/appDAI/requirements.txt
     tags:
     - requirements
-    
-  - name: Lanzar app
-    command: nohup python ~/appDAI/manage.py runserver 0.0.0.0:80
-    tags:
-    - app
 ~~~
+
+* Crear el fabfile.py (Fabric) que se encargará de lanzar la aplicación:
+~~~
+from fabric.api import run
+
+def ejecutar_app():
+	run('sudo nohup python /root/appDAI/manage.py runserver 0.0.0.0:80')
+	
+def test():
+	run('sudo python /root/appDAI/manage.py test')
+~~~
+
+Se puede  ver como acaba la ejecución del script con el lanzamiento de la app:
+![fabric](http://i1016.photobucket.com/albums/af281/raperaco/fabric_zpsa5xemjqa.png)
 
 * Crear el Vagrantfile:
 ~~~

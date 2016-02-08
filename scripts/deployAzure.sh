@@ -13,3 +13,6 @@ vagrant plugin install vagrant-azure
 cd ../deployAzure/
 export ANSIBLE_HOSTS=~/ansible_hosts
 vagrant up --provider=azure
+
+#Despliegue de la app
+fab -p 'Alex2016!' -H vagrant@tuspachangas.cloudapp.net ejecutar_app

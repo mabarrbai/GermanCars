@@ -34,8 +34,3 @@
     tags:
     - requirements
     
-  - name: Lanzar app
-    command: nohup python ~/appDAI/manage.py runserver 0.0.0.0:80
-    tags:
-    - app
-    
