@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/mabarrbai/TusPachangas.svg?branch=master)](https://travis-ci.org/mabarrbai/TusPachangas)
 
 [![Deploy to Heroku TusPachangas](http://blog.openplans.org/wp-content/uploads/2014/12/Screen-Shot-2014-12-03-at-10.47.32-PM.png)](https://tuspachangas.herokuapp.com/partidos/penha)
-[![Deploy Azure](http://www.file-extensions.org/imgs/app-icon/128/10485/microsoft-windows-azure-icon.png)](http://tuspachangas.cloudapp.net/partidos/penha/)
+[![Deploy Azure](https://camo.githubusercontent.com/9285dd3998997a0835869065bb15e5d500475034/687474703a2f2f617a7572656465706c6f792e6e65742f6465706c6f79627574746f6e2e706e67)](http://tuspachangas.cloudapp.net/partidos/penha/)
 
 Proyecto de la asignatura Infraestructura Virtual en conjunto con la de Desarrollo de Aplicaciones para Internet
 
